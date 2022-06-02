@@ -14,10 +14,11 @@ pip install gt-examcard-parser
 ## Basic usage
 
 ```python
+import examcard as ec
 
+filename = 'MyStudy.ExamCard'
+examcard = ec.parse(filename)
 ```
-
-## Examples
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
