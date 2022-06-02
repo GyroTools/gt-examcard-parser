@@ -1,17 +1,15 @@
 import base64
 import hashlib
-import struct
-
 import os
+import struct
 import zipfile
-from dataclasses import dataclass
 from typing import List
 
 
-@dataclass
 class EnumDesc:
-    id: int
-    values: List[str]
+    def __init__(self, it: int, values: List[str]):
+        self.id = id
+        self.values = values
 
 
 def _get_a_param(str_block, i):
@@ -142,7 +140,7 @@ def _get_parameter_data(node):
             out[key] = value
 
         md5hash = cur_enum_desc[0]
-        if hash:
+        if md5hash:
             enums[key] = enum_id
             if not enum_desc.get(md5hash):
                 ed = EnumDesc(enum_id, cur_enum_desc[1])

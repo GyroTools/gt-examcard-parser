@@ -13,6 +13,6 @@ class TestExamCard:
         assert examcard.get('SE EPI 2Sh 1Sl')
 
         seq1 = examcard.get('GE-SE EPI 2Sh 1Sl')
-        assert len(seq1.get('Parameter')) == 215
-        assert len(seq1.get('EnumDescriptions')) == 72
-        assert len(seq1.get('EnumMap')) == 215
+        assert len(seq1.get('protocolParameter')) == 215
+        assert len(seq1.get('enumDescriptions')) == 71
+        assert len(seq1.get('enumMap')) == 119

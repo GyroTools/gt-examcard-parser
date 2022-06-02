@@ -9,7 +9,11 @@ from examcard.sz_sequence import _get_parameter_data
 def _get_item_content(item):  # item has id attrib
     out = dict()
 
-    children = item.getchildren()
+    try:
+        children = item.getchildren()
+    except:
+        children = list(item)
+
     for child in children:
         if child.text:
             key = _clean_str_value(child.tag)
@@ -20,7 +24,11 @@ def _get_item_content(item):  # item has id attrib
 
 def _print_info_for_node(node, root):  # root is needed for referenced nodes
     out = dict()
-    children = node.getchildren()
+    try:
+        children = node.getchildren()
+    except:
+        children = list(node)
+
     for child in children:
         key = _clean_str_value(child.tag)
         if child.text:  # print those that have text
@@ -88,7 +96,11 @@ def _get_one_exec_step(root, one_step):
 
 
 def _get_child_name(node):
-    children = node.getchildren()
+    try:
+        children = node.getchildren()
+    except:
+        children = list(node)
+
     for child in children:
         if child.tag == 'name':
             nm = child.text
@@ -98,7 +110,10 @@ def _get_child_name(node):
 
 
 def _get_child_thru_ref(root, parent, child_tag):
-    children = parent.getchildren()
+    try:
+        children = parent.getchildren()
+    except:
+        children = list(parent)
     ref = None
     for child in children:
         if child.tag == child_tag:
@@ -154,6 +169,6 @@ def parse(filename):
         out[name].update(res)
 
         # work out parameterData for sequence parameters
-        out[name]['Parameter'], enum_desc, out[name]['EnumMap'] = _get_parameter_data(param_data)
-        out[name]['EnumDescriptions'] = [ed for h, ed in enum_desc.items()]
+        out[name]['protocolParameter'], enum_desc, out[name]['enumMap'] = _get_parameter_data(param_data)
+        out[name]['enumDescriptions'] = [ed for h, ed in enum_desc.items()]
     return out

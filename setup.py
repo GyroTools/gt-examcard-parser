@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="gt-examcard-parser",
-    version="0.0.1",
+    version="0.0.2",
     author="Martin Bührer",
     author_email="info@gyrotools.com",
     description="Parser for Philips ExamCards",
