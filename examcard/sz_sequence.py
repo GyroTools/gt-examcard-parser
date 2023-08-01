@@ -144,7 +144,7 @@ def _get_parameter_data(node):
             if md5hash in enum_desc:
                 enums[key] = enum_desc[md5hash]
             else:
-                enum_desc.get(md5hash):
+                enum_desc.get(md5hash)
                 ed = EnumDesc(enum_id, cur_enum_desc[1])
                 enum_desc[md5hash] = ed
                 enum_id += 1
