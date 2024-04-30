@@ -16,3 +16,13 @@ class TestExamCard:
         assert len(seq1.get('protocolParameter')) == 215
         assert len(seq1.get('enumDescriptions')) == 71
         assert len(seq1.get('enumMap')) == 119
+
+        seq1 = examcard.get('GE-SE EPI 2Sh 1Sl')
+        par_name = 'EX_ACQ_scan_mode'
+        scan_mode = seq1.get('protocolParameter').get(par_name)
+        enum_index = seq1.get('enumMap').get(par_name)
+        if enum_index is not None:
+            enum_desc = seq1.get('enumDescriptions')[enum_index]
+            scan_mode = enum_desc.values[scan_mode]
+        print(scan_mode)
+

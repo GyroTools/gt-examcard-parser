@@ -151,13 +151,16 @@ def parse(filename):
     # some info for the exam card
     out['General'] = _print_tag(root, 'ExamCard')
 
-    for one_step in exec_step:
+    for i, one_step in enumerate(exec_step):
         name, param_data, data_buff, scan_proc, scan_prop, proc_conf = _get_one_exec_step(root, one_step)
         # all needed nodes are ready now
 
         # decode the dataBuffer for sequence description
         # res = seq._get_data_buffer(data_buff, seq_cnt)
         # dataBuffer info only export to pdf as it contains image
+
+        if name is None:
+            name = filename.stem if i == 0 else f'{filename.stem}_{i}'
 
         # some more info for the sequence
         out[name] = _print_info_for_node(scan_proc, root)
