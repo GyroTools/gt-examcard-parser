@@ -7,7 +7,7 @@ from typing import List
 
 
 class EnumDesc:
-    def __init__(self, it: int, values: List[str]):
+    def __init__(self, id: int, values: List[str]):
         self.id = id
         self.values = values
 
@@ -141,8 +141,10 @@ def _get_parameter_data(node):
 
         md5hash = cur_enum_desc[0]
         if md5hash:
-            enums[key] = enum_id
-            if not enum_desc.get(md5hash):
+            if md5hash in enum_desc:
+                enums[key] = enum_desc[md5hash].id
+            else:
+                enum_desc.get(md5hash)
                 ed = EnumDesc(enum_id, cur_enum_desc[1])
                 enum_desc[md5hash] = ed
                 enum_id += 1
